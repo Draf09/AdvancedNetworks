@@ -1,0 +1,47 @@
+MYMIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    OBJECT-GROUP FROM SNMPv2-CONF
+    OBJECT-TYPE, experimental FROM SNMPv2-SMI
+    DisplayString FROM SNMPv2-TC;
+
+myMIB MODULE-IDENTITY
+    LAST-UPDATED "202406290000Z"
+    ORGANIZATION "PUCRS"
+    CONTACT-INFO "admin@localhost"
+    DESCRIPTION "MY MIB"
+    REVISION "202406290000Z"
+    DESCRIPTION "Initial version."
+    ::= { experimental 1234 }
+
+myObjects OBJECT IDENTIFIER ::= { myMIB 1 }
+
+httpRequestsTotal OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION "The total number of HTTP requests."
+    ::= { myObjects 1 }
+
+httpRequestsPerSecond OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION "The number of HTTP requests per second."
+    ::= { myObjects 2 }
+
+httpResponseTime OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION "The average HTTP response time in milliseconds."
+    ::= { myObjects 3 }
+
+httpActiveConnections OBJECT-TYPE
+    SYNTAX Integer32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION "The number of active HTTP connections."
+    ::= { myObjects 4 }
+
+END
